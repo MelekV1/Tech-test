@@ -14,20 +14,18 @@ export default function Products() {
     }, []);
   return (
       <div>
-    <Table striped bordered hover variant="dark">
-    <thead>
-        <tr>
-        <th>productName </th>
-        <th>Category</th>
-        <th>price</th>
-        <th>imageUrl</th>
-        <th>review avg</th>
-        <th>Details</th>
-        </tr>
-    </thead>
-
-
-    {products.map(product => (
+        <Table striped bordered hover variant="dark">
+        <thead>
+            <tr>
+            <th>productName </th>
+            <th>Category</th>
+            <th>price</th>
+            <th>imageUrl</th>
+            <th>review avg</th>
+            <th>Details</th>
+            </tr>
+        </thead>
+        {products.map(product => (
             <>   
             <tbody>
             <tr>
