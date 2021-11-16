@@ -5,8 +5,6 @@ const Schema = mongoose.Schema;
 var reviewSchema = new Schema({
     value:  {
         type: Number,
-        min: 1,
-        max: 5,
         required: true
     },
     content:  {
@@ -21,7 +19,6 @@ const productSchema = new Schema({
     productName: {
         type: String,
         required: true,
-        unique: true
     },
     description: {
         type: String,
@@ -38,7 +35,6 @@ const productSchema = new Schema({
     price: {
         type: Number,
         required: true,
-        min: 0
     },
     reviews:[reviewSchema]
 }, {

@@ -18,12 +18,12 @@ router.get('/fetch_store', async function(req, res, next) {
   axios.get(url)
   .then(function (response) {
     // handle success
-    onSuccess(response)
+    onSuccess(response.data)
     console.log("Data fetched and stored");
   })
   .catch(function (error) {
     // handle error
-    console.log(error);
+    throw error
   })
   .then(function () {
     console.log("Process finished");
@@ -32,7 +32,20 @@ router.get('/fetch_store', async function(req, res, next) {
 });
 
 function onSuccess(response) {
-  Products.create(response.data);
+  response.products.forEach(element => {
+    //console.log(element.productName);
+    let newProduct = new Products();
+    newProduct.productName = element.productName;
+    newProduct.description = element.description;
+    newProduct.price = element.price;
+    newProduct.category = element.category;
+    newProduct.imageUrl = element.imageUrl;
+    newProduct.reviews = element.reviews;
+    //console.log(newProduct);
+    newProduct.save();
+
+  } );
+
 }
 
 
